@@ -11,9 +11,30 @@
     
     <script>
     	var boo = 1;
+        var languages = [
+            { name: "JavaScript", fileExtension: ".js" },
+            { name: "TypeScript", fileExtension: ".ts" },
+            { name: "CoffeeScript", fileExtension: ".coffee" }
+        ];
     	console.log({bar:boo});
+        //控制台出现红色错误提示
     	console.error("出错了");
+        //控制台出现黄色三角标警告
     	console.warn("警告");
+        //在控制台转换成表格形式
+        console.table(languages);
+        //计数被调用的次数
+        function greet(name) {
+            console.count();
+            console.log('hi,' + name);
+        }
+        greet('zwk');
+        greet('wyy');
+        //使对象更易阅读,两者对比，发现dir只是将log的结果展开，所以用log也可以，就是要手动展开23333
+        //但是在DOM对象操作上好像还是不错的
+        //dirxml方法主要用于以目录树的形式，显示 DOM 节点。
+        console.dir(languages);
+        console.log(languages);
     </script>
 </body>
 </html>
