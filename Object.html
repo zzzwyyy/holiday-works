@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>判断一个变量是否为对象</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div>
+		<p>Object参数如果是一个对象，那它会返回该对象。</p>
+		<p>将该变量用严格相等运算符（===)比较</p>
+	</div>
+
+	<script>
+		function isObject(vaule) {
+			return vaule === Object(vaule);
+		}
+		//在控制台试试下面命令
+        //isObject([]);
+        //isObject('aaa');
+	</script>
+</body>
+</html>

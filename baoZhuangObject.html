@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>包装对象</title>
+	<meta charset="utf-8">
+</head>
+<body>
+   <script type="text/javascript">
+   	
+   		//原始对象
+   		var num = new Number(123);
+   		var str = new String('abc');
+   		var bool = new Boolean(true);
+   		//在操作台执行typeof方法
+
+   		//Number、String和Boolean这三个原生对象，如果不作为构造函数调用（即调用时不加new），而是作为普通函数调用，常常用于将任意类型的值转为数值、字符串和布尔值。
+   		Number('123');
+
+   		//Number自定义方法
+   		Number.prototype.add = function (x) {
+   			return this + x ;
+   		};
+   		console.log((8)['add'](2));
+   </script>
+</body>
+</html>
