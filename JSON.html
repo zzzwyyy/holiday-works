@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON对象</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+
+	<script>
+		
+		var a = { 'name':'张三' };
+		var a_JSON = JSON.stringify(a);
+		document.write(a_JSON);
+
+		//JSON第二个参数
+		//数组
+		var obj = {
+			'name': '张三',
+			'age': 24,
+			'from': 'China'
+		};
+		var obj_json = JSON.stringify(obj,['name','age']);
+		document.write('</br>' + obj_json);
+		//函数
+		function f(key,value) {
+			if (typeof value === "number") {
+				value =  2*value;
+			}
+			return value;
+		}
+		var obj_json1 = JSON.stringify(obj,f);
+		document.write('</br>' + '这里的年龄出现了变化' + obj_json1);
+
+	</script>
+
+</body>
+</html>

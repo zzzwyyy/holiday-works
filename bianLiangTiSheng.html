@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>变量提升</title>
+	<meta charset = 'utf-8'>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		//变量提升的例子，无报错，而是显示undefined
+		(function () {
+			console.log(x);
+			var x = 'javascript';
+		})();
+
+		//上面的例子实际是下面这样
+		(function () {
+			var x ;
+			console.log(x);
+			x = 'javascript';
+		})();
+		//容易混淆的题型，并不涉及变量提升，只是同名覆盖
+		var y = function() {};
+		y = 'javascript';
+		console.log('同名覆盖的结果:' + y);
+
+		//函数的两种定义方法在变量提升中的坑
+		//函数声明式
+		(function () {
+			f1();
+			function f1() {
+				console.log('这是函数声明式')
+			}
+		})();
+		//函数表达式
+		(function () {
+			f2();
+			var f2 = function() {
+				console.log('这是函数表达式')
+			};
+		})();
+
+		//函数优先被提升，且同名则被覆盖
+		function fun() {};
+		var fun = 'not function';
+		console.log(fun);
+
+		//我的理解：
+		//创建阶段，将所有声明放入变量对象中，以变量名创建属性
+		//VO = {
+		//	fun:function(){}, //函数声明提前放入变量对象
+		//	...
+		//	...
+
+		//	fun:'',   //因为同名所以在创建的时候跳过了undefined的赋值
+		//	x:undefined,  //没有找到同名函数
+		//	...
+		//	...
+		//}
+		//执行阶段
+		//学习链接https://juejin.im/post/5d0caf64f265da1b7b31930f
+	</script>
+
+</body>
+</html>

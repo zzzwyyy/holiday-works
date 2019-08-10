@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	Date对象</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+
+	<script>
+		//Date对象构造函数用法
+		var today = new Date();
+		console.log(today);
+		console.log(today instanceof Object );
+
+		console.log('   ');
+		//日期的运算
+		var d1 = new Date(2000,2,1);
+		var d2 = new Date(2000,3,1);
+		var add = d1 + d2, minus = d1 - d2;
+		console.log('两个日期实例对象进行减法运算时，返回的是它们间隔的毫秒数:' + minus);
+		console.log('两个日期实例对象相加时，返回的是连接起来的字符串:' + add);
+
+		console.log('   ');
+		//静态方法
+		//Date.now()返回当前时间距离零点时间的毫秒数
+		//Date.parse()用来解析字符串，返回该时间距离时间零点的毫秒数
+		//Date.UTC()接受年月日参数，返回该时间距离时间零点的毫秒数
+		var now = Date.now();
+		console.log('当前时间距离零点时间的毫秒数：' + now );
+		var str = Date.parse('2019-6-25');
+		console.log('解析字符串得到的时间距离零点时间的毫秒数：' + str);
+		var ymd = Date.UTC(2019,6,25);
+		console.log('该时间距离零点时间的毫秒数：' + ymd );
+		//【在这里有一个问题，parse和UTC方法对同一个时间返回的毫秒数不一样】
+
+		console.log('   ');
+		//to类方法
+		//Date.prototype.toLocaleString()：完整的本地时间。
+        //Date.prototype.toLocaleDateString()：本地日期（不含小时、分和秒）。
+        //Date.prototype.toLocaleTimeString()：本地时间（不含年月日）。
+        var time = new Date();
+        console.log('现在的日期和时间为：' + time.toLocaleString());
+        console.log('今天的日期为：' + time.toLocaleDateString());
+        console.log('现在的时间为：' + time.toLocaleTimeString());
+
+        console.log('   ');
+		//get类方法
+		//    getTime()：返回实例距离1970年1月1日00:00:00的毫秒数，等同于valueOf方法。
+        //getDate()：返回实例对象对应每个月的几号（从1开始）。
+        //getDay()：返回星期几，星期日为0，星期一为1，以此类推。
+    	//getFullYear()：返回四位的年份。
+    	//getMonth()：返回月份（0表示1月，11表示12月）。
+    	//getHours()：返回小时（0-23）。
+    	//getMilliseconds()：返回毫秒（0-999）。
+    	//getMinutes()：返回分钟（0-59）。
+    	//getSeconds()：返回秒（0-59）。
+    	//getTimezoneOffset():返回当前时间与UTC的时区差异，以分钟表示，返回结果考虑到了夏令时因素。
+    	//[例]：计算现在离2020年还有多少天
+    	function lefttime() {
+    		var today = new Date();
+    		var endtime = new Date(today.getFullYear(),0,1,0,0,0);
+    		var aday = 24*60*60*1000;
+    		return Math.round((today.getTime() - endtime.getTime()) / aday);
+    	}
+    	console.log('现在距离2020年还有' + lefttime() + '天');
+
+    	console.log('    ');
+    	//set类方法
+    	//setDate(date)：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。
+    	//setFullYear(year [, month, date])：设置四位年份。
+    	//setHours(hour [, min, sec, ms])：设置小时（0-23）。
+    	//setMilliseconds()：设置毫秒（0-999）。
+    	//setMinutes(min [, sec, ms])：设置分钟（0-59）。
+    	//setMonth(month [, date])：设置月份（0-11）。
+    	//setSeconds(sec [, ms])：设置秒（0-59）。
+    	//setTime(milliseconds)：设置毫秒时间戳。
+
+    	//我想设计一个计算我和男朋友在一起天数的计时器
+    	function loveDay() {
+    		var today = new Date();
+    		var lovedDay = new Date('2016-07-18');
+    		var aday = 24*60*60*1000;
+    		return Math.round((today.getTime() - lovedDay.getTime()) / aday);
+    	}
+    	console.log('我们在一起已经' + loveDay() + '天');
+	</script>
+
+</body>
+</html>

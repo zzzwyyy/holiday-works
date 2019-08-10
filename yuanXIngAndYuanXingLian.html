@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原型和原型链</title>
+	<meta charset = 'utf-8'>
+</head>
+<body>
+
+	<script>
+		//JavaScript中的对象，都有一个内置属性[[Prototype]]，指向这个对象的原型对象。
+
+		//字面量方式创建对象，它的原型就是Object.prototype(最顶层的原型对象)；
+		var obj = {};
+		console.log(Object.getPrototypeOf(obj) === Object.prototype);
+		console.log(obj.__proto__ === Object.prototype);
+
+		//函数的构造调用创建对象，它的原型是这个函数的prototype指向的对象；
+		var f = function(name) {  this.name = name };
+		f.prototype.getName = function() {return this.name };
+		var obj1 = new f('javaScript');
+		console.log(obj1.getName());
+		console.log(obj1.__proto__ === f.prototype);
+		//现在来一个栗子在操作台看看具体__proto__和prototype是怎么回事
+		var foo = new f('java');
+		console.log(obj1);
+		console.log(foo);
+
+		//Object.create()创建对象，它的原型是我们传入的对象；
+		var obj2 = {};
+		var obj3 = Object.create(obj2);
+		console.log(obj3.__proto__ === obj2);
+
+	</script>
+
+</body>
+</html>

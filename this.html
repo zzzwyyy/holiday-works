@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>this关键字的练习</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<script type="text/javascript">
+		//普通函数调用this
+		var name1 = 'window';
+		var f = function() {
+			console.log(this.name1)  //此时指向顶层对象（window）
+		};
+		f();
+		let name2 = 'window2';  //let用来声明局部变量，只在let命令所在的代码区块有效
+		var f1 = function() {
+			console.log(this.name2)
+		};
+		f1();
+		//对象中的函数调用方法
+	</script>
+
+</body>
+</html>
